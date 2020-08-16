@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    class AddressbookDate
+    public class AddressbookDate
     {
         private string day;
         private string month;
@@ -14,9 +14,9 @@ namespace WebAddressbookTests
 
         public AddressbookDate(string day, string month, string year)
         {
-            this.day = this.day;
-            this.month = this.month;
-            this.year = this.year;
+            this.day = day;
+            this.month = month;
+            this.year = year;
         }
 
         public string Day

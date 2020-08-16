@@ -6,25 +6,19 @@ using NUnit.Framework;
 
 
 namespace WebAddressbookTests
-
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class GroupRemovalTests : TestBase
     {
         [Test]
-        public void GroupCreationTest()
+        public void GroupRemovalTest()
         {
             navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
             navigator.GoToGroupsPage();
-            groupHelper.InitGroupCreation();
-            GroupData group = new GroupData("aaa");
-            group.Header = "bbb";
-            group.Footer = "ccc";
-            groupHelper.FillGroupForm(group);
-            groupHelper.SubmitGroupCreation();
+            groupHelper.SelectGroup(1);
+            groupHelper.RemoveGroup();
             groupHelper.ReturnToGroupsPage();
-            loginHelper.Logout();
         }
     }
 }
