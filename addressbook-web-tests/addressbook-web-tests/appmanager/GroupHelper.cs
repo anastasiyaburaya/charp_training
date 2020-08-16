@@ -52,6 +52,5 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.Name("new")).Click();
         }
-
     }
 }

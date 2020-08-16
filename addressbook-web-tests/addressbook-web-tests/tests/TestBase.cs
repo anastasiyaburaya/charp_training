@@ -15,10 +15,6 @@ namespace WebAddressbookTests
         [SetUp]
         public void SetupTest()
         {
-            driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
-            verificationErrors = new StringBuilder();
-
             app = new ApplicationManager();
         }
 
