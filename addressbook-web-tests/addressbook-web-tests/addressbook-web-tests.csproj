@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="appmanager\ContactHelper.cs" />
+    <Compile Include="GroupModificationTests.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="Figure\Circle.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Figure\Figure.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="appmanager\GroupHelper.cs" />
-    <Compile Include="tests\GroupRemovalTest.cs" />
+    <Compile Include="tests\GroupRemovalTests.cs" />
     <Compile Include="appmanager\HelperBase.cs" />
     <Compile Include="appmanager\LoginHelper.cs" />
     <Compile Include="appmanager\NavigationHelper.cs" />
