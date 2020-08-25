@@ -65,7 +65,7 @@ namespace WebAddressbookTests
 
         public ContactHelper SubmitContactModification()
         {
-            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='update'])[1]")).Click();
             return this;
         }
 

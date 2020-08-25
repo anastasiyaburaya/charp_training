@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         [Test]
         public void ContactModificationTest()
         {
-            if (!app.Groups.IsElementPresent(By.Name("selected[]")))
+            if (!app.Contacts.IsElementPresentByName())
             {
                 ContactData contact = new ContactData("firstnameTest", "lastnameTest");
                 contact.Middlename = "qqq";

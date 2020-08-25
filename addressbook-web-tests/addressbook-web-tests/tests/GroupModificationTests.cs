@@ -18,7 +18,7 @@ namespace WebAddressbookTests
         {
             app.Navigator.GoToGroupsPage();
 
-            if (!app.Groups.IsElementPresent(By.ClassName("group")))
+            if (!app.Groups.IsElementPresentByClassName())
             {
                 GroupData group = new GroupData("ddddd");
                 group.Header = "ffffff";

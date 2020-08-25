@@ -43,6 +43,16 @@ namespace WebAddressbookTests
             }
         }
 
+        public bool IsElementPresentByClassName()
+        {
+            return IsElementPresent(By.ClassName("group"));
+        }
+
+        public bool IsElementPresentByName()
+        {
+            return IsElementPresent(By.Name("selected[]"));
+        }
+
         private bool IsAlertPresent()
         {
             try
