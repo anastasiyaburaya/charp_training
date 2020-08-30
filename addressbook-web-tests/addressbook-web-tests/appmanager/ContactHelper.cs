@@ -43,6 +43,22 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+
+            foreach (IWebElement element in elements)
+            {
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+
+                contacts.Add(new ContactData(cells[2].Text, cells[1].Text));
+            }
+
+            return contacts;
+        }
+
         public ContactHelper RemoveContact()
         {
             acceptNextAlert = true;
@@ -106,7 +122,7 @@ namespace WebAddressbookTests
             new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Anniversary.Day);
             driver.FindElement(By.XPath("(//option[@value='4'])[2]")).Click();
             new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Anniversary.Month);
-            driver.FindElement(By.XPath("(//option[@value='March'])[2]")).Click();
+            driver.FindElement(By.XPath("//option[@value='March']")).Click();
             Type(By.Name("ayear"), contact.Anniversary.Year);
             Type(By.Name("address2"), contact.Address2);
             Type(By.Name("phone2"), contact.Home2);

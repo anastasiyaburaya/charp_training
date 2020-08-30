@@ -15,6 +15,11 @@ namespace WebAddressbookTests
         protected IWebDriver driver;
         protected bool acceptNextAlert;
 
+        public void Wait(TimeSpan timeSpan)
+        {
+            driver.Manage().Timeouts().ImplicitWait = timeSpan;
+        }
+
         public HelperBase(ApplicationManager manager)
         {
             this.manager = manager;

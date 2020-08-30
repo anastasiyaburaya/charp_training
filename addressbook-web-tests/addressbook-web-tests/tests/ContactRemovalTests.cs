@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -44,7 +45,17 @@ namespace WebAddressbookTests
                 app.Contacts.Create(contact);
             }
 
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            
             app.Contacts.Remove("selected[]");
+            app.Contacts.Wait(TimeSpan.FromSeconds(oldContacts.Count * 2));; 
+            
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+
+            oldContacts.RemoveAt(0);
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }
