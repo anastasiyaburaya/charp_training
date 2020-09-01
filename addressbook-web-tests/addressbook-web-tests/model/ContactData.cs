@@ -62,12 +62,18 @@ namespace WebAddressbookTests
 
         public int CompareTo(ContactData other)
         {
+           
             if (Object.ReferenceEquals(other, null))
             {
                 return 1;
             }
 
-            return (Firstname + Lastname).CompareTo(other.Firstname + other.Lastname);
+            if (Lastname.CompareTo(other.Lastname) != 0)
+            {
+                return Lastname.CompareTo(other.Lastname);
+            }
+
+            return Firstname.CompareTo(other.Firstname);
 
         }
 
