@@ -48,8 +48,10 @@ namespace WebAddressbookTests
             List<ContactData> oldContacts = app.Contacts.GetContactList();
             
             app.Contacts.Remove("selected[]");
-            app.Contacts.Wait(TimeSpan.FromSeconds(oldContacts.Count * 2));; 
-            
+            app.Contacts.Wait(TimeSpan.FromSeconds(oldContacts.Count * 5));;
+
+            Assert.AreEqual(oldContacts.Count - 1, app.Contacts.GetContactCount());
+
             List<ContactData> newContacts = app.Contacts.GetContactList();
 
             oldContacts.RemoveAt(0);
