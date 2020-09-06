@@ -8,31 +8,12 @@ namespace WebAddressbookTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
-        private string firstname;
-        private string lastname;
-        private string middlename = "";      
-        private string nickname = "";
-        private string title = "";
-        private string company = "";
-        private string address = "";
-        private string home = "";
-        private string mobile = "";
-        private string work = "";
-        private string fax = "";
-        private string email = "";
-        private string email2 = "";
-        private string email3 = "";
-        private string homepage = "";
-        private string address2 = "";
-        private string home2 = "";
-        private string notes = "";
-        private AddressbookDate birthday = new AddressbookDate("", "", "");
-        private AddressbookDate anniversary = new AddressbookDate("", "", "");
+        private string allPhones;
 
         public ContactData(string firstname, string lastname)
         {
-            this.firstname = firstname;
-            this.lastname = lastname;
+            this.Firstname = firstname;
+            this.Lastname = lastname;
         }
 
         public bool Equals(ContactData other)
@@ -77,124 +58,72 @@ namespace WebAddressbookTests
 
         }
 
-        public string Firstname
+        public string Firstname { get; set; }
+
+        public string Lastname { get; set; }
+
+        //public string Middlename { get; set; } = "";
+
+        //public string Nickname { get; set; } = "";
+
+        //public string Title { get; set; } = "";
+
+        //public string Company { get; set; } = "";
+
+        public string Address { get; set; } = "";
+
+        public string HomePhone { get; set; } = "";
+
+        public string MobilePhone { get; set; } = "";
+
+        public string WorkPhone { get; set; } = "";
+
+        public string AllPhones
         {
-            get { return firstname; }
-            set { firstname = value; }
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+                else
+                {
+                    return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
+                }
+            }
+
+            set { allPhones = value; }          
         }
 
-        public string Lastname
-        { 
-            get { return lastname; }
-            set { lastname = value; }
+        private string CleanUp(string phone)
+        {
+            if (phone == null || phone == "")
+            {
+                return "";
+            }
+
+            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
         }
 
-        public string Middlename
-        {
-            get { return middlename; }
-            set { middlename = value; }
-        }
+        //public string Fax { get; set; } = "";
 
-        public string Nickname
-        {
-            get { return nickname; }
-            set { nickname = value; }
-        }
+        public string Email { get; set; } = "";
 
-        public string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
+        public string Email2 { get; set; } = "";
 
-        public string Company
-        {
-            get { return company; }
-            set { company = value; }
-        }
+        public string Email3 { get; set; } = "";
 
-        public string Address
-        {
-            get { return address; }
-            set { address = value; }
-        }
+        //public string Homepage { get; set; } = "";
 
-        public string Home
-        {
-            get { return home; }
-            set { home = value; }
-        }
+        //public string Address2 { get; set; } = "";
 
-        public string Mobile
-        {
-            get { return mobile; }
-            set { mobile = value; }
-        }
+        //public string Home2 { get; set; } = "";
 
-        public string Work
-        {
-            get { return work; }
-            set { work = value; }
-        }
+        //public string Notes { get; set; } = "";
 
-        public string Fax
-        {
-            get { return fax; }
-            set { fax = value; }
-        }
+        //public AddressbookDate Birthday { get; set; } = new AddressbookDate("", "", "");
 
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-
-        public string Email2
-        {
-            get { return email2; }
-            set { email2 = value; }
-        }
-
-        public string Email3
-        {
-            get { return email3; }
-            set { email3 = value; }
-        }
-
-        public string Homepage
-        {
-           get { return homepage; }
-           set { homepage = value; }
-        }
-
-        public string Address2
-        {
-            get { return address2; }
-            set { address2 = value; }
-        }
-        public string Home2
-        {
-            get { return home2; }
-            set { home2 = value; }
-        }
-
-        public string Notes
-        {
-            get { return notes; }
-            set { notes = value; }
-        }
-
-        public AddressbookDate Birthday
-        {
-            get { return birthday; }
-            set { birthday = value; }
-        }
-
-        public AddressbookDate Anniversary
-        {
-            get { return anniversary; }
-            set { anniversary = value; }
-        }
-    }
+        //public AddressbookDate Anniversary { get; set; } = new AddressbookDate("", "", "");
+       }
     }
 
