@@ -48,6 +48,7 @@ namespace WebAddressbookTests
             //newData.Nickname = "wuuuww";
             //newData.Title = "gjg";
             //newData.Company = "ghjgj";
+            newData.Address = "kkk";
             newData.HomePhone = "hjgj";
             newData.MobilePhone = "435";
             newData.WorkPhone = "fghfh";

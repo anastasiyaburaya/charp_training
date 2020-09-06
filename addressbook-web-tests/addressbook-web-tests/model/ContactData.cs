@@ -9,6 +9,7 @@ namespace WebAddressbookTests
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
+        private string allEmail;
 
         public ContactData(string firstname, string lastname)
         {
@@ -113,6 +114,24 @@ namespace WebAddressbookTests
 
         public string Email3 { get; set; } = "";
 
+        public string AllEmail
+        {
+            get
+            {
+                if (allEmail != null)
+                {
+                    return allEmail;
+                }
+                else
+                {
+                    return (CleanUp(Email) + CleanUp(Email2) + CleanUp(Email3)).Trim();
+                }
+            }
+
+            set { allEmail = value; }
+
+        }
+
         //public string Homepage { get; set; } = "";
 
         //public string Address2 { get; set; } = "";
@@ -124,6 +143,6 @@ namespace WebAddressbookTests
         //public AddressbookDate Birthday { get; set; } = new AddressbookDate("", "", "");
 
         //public AddressbookDate Anniversary { get; set; } = new AddressbookDate("", "", "");
-       }
+    }
     }
 
