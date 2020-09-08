@@ -148,6 +148,13 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public void ShowContactDetails(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"))[6]
+                .FindElement(By.TagName("a")).Click();
+        }
+
         public int GetContactCount()
         {
             return driver.FindElements(By.Name("entry")).Count;
@@ -174,11 +181,20 @@ namespace WebAddressbookTests
             };
         }
 
+        public string GetContactInformationFromDetails()
+        {
+            manager.Navigator.GoToHomePage();
+            ShowContactDetails(0);
+
+            string detailsText = driver.FindElement(By.Id("content")).Text;
+
+            return detailsText;
+        }
+
         public ContactData GetContactInformationFromEditForm(int index)
         {
             manager.Navigator.GoToHomePage();
             InitContactModification(0);
-
 
             string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
             string lastName = driver.FindElement(By.Name("lastname")).GetAttribute("value");
