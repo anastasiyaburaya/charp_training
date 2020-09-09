@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WebAddressbookTests
@@ -39,7 +40,11 @@ namespace WebAddressbookTests
 
         public override string ToString()
         {
-            return "firstname=" + Firstname + " " + "lastname=" + Lastname;
+            //return "firstname=" + Firstname + " " + "lastname=" + Lastname;
+
+            return "firstname=" + Firstname + "\nlastname=" + Lastname + "\naddress" + Address 
+                + "\nhome phone" + HomePhone + "mobile phone" + MobilePhone + "\nwork phone" + WorkPhone
+                + "\nemail" + Email + "\nemail2" + Email2 + "\nemail3" + Email3;
         }
 
         public int CompareTo(ContactData other)
@@ -103,7 +108,7 @@ namespace WebAddressbookTests
                 return "";
             }
 
-            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+            return Regex.Replace(phone, "[ -()]", "") + "\r\n";
         }
 
         //public string Fax { get; set; } = "";
