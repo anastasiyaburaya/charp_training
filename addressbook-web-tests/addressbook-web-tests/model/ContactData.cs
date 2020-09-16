@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using LinqToDB.Mapping;
+using Microsoft.Office.Interop.Excel;
 
 namespace WebAddressbookTests
 {
+    [Table(Name = "addressbook")]
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
@@ -68,8 +71,10 @@ namespace WebAddressbookTests
 
         }
 
+        [Column(Name = "firstname")]
         public string Firstname { get; set; }
 
+        [Column(Name = "lastname")]
         public string Lastname { get; set; }
 
         //public string Middlename { get; set; } = "";
@@ -80,12 +85,16 @@ namespace WebAddressbookTests
 
         //public string Company { get; set; } = "";
 
+        [Column(Name = "address")]
         public string Address { get; set; } = "";
 
+        [Column(Name = "home")]
         public string HomePhone { get; set; } = "";
 
+        [Column(Name = "mobile")]
         public string MobilePhone { get; set; } = "";
 
+        [Column(Name = "work")]
         public string WorkPhone { get; set; } = "";
 
         public string AllPhones
@@ -117,10 +126,13 @@ namespace WebAddressbookTests
 
         //public string Fax { get; set; } = "";
 
+        [Column(Name = "email")]
         public string Email { get; set; } = "";
 
+        [Column(Name = "email2")]
         public string Email2 { get; set; } = "";
 
+        [Column(Name = "email3")]
         public string Email3 { get; set; } = "";
 
         public string AllEmail
@@ -141,6 +153,9 @@ namespace WebAddressbookTests
 
         }
 
+        [Column(Name = "id"), PrimaryKey, Identity]
+        public string Id { get; set; }
+
         //public string Homepage { get; set; } = "";
 
         //public string Address2 { get; set; } = "";
@@ -152,6 +167,14 @@ namespace WebAddressbookTests
         //public AddressbookDate Birthday { get; set; } = new AddressbookDate("", "", "");
 
         //public AddressbookDate Anniversary { get; set; } = new AddressbookDate("", "", "");
+
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from g in db.Contacts select g).ToList();
+            }
+        }
     }
-    }
+}
 

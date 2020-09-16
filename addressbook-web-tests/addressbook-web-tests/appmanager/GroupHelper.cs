@@ -34,9 +34,9 @@ namespace WebAddressbookTests
 
         }
 
-        public GroupHelper Modify(int v, GroupData newData)
+        public GroupHelper Modify(GroupData group, GroupData newData)
         {
-            SelectGroup(v);
+            SelectGroup(group.Id);
             InitGroupModification();
             FillGroupForm(newData);
             SubmitGroupModification();

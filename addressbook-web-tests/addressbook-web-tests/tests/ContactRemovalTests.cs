@@ -10,7 +10,7 @@ using OpenQA.Selenium;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactRemovalTests : AuthTestBase
+    public class ContactRemovalTests : ContactTestBase
     {
 
         [Test]
@@ -45,14 +45,15 @@ namespace WebAddressbookTests
                 app.Contacts.Create(contact);
             }
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
-            
-            app.Contacts.Remove("selected[]");
+            List<ContactData> oldContacts = ContactData.GetAll();
+            ContactData toBeRemoved = oldContacts[0];
+
+            app.Contacts.Remove(toBeRemoved);
             app.Contacts.Wait(TimeSpan.FromSeconds(oldContacts.Count * 5));;
 
             Assert.AreEqual(oldContacts.Count - 1, app.Contacts.GetContactCount());
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = ContactData.GetAll();
 
             oldContacts.RemoveAt(0);
             oldContacts.Sort();
