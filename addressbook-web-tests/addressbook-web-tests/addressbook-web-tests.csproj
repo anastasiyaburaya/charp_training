@@ -148,6 +148,7 @@
     <Compile Include="Figure\Square.cs" />
     <Compile Include="tests\GroupTestBase.cs" />
     <Compile Include="tests\LoginTests.cs" />
+    <Compile Include="tests\RemovingContactFromGroupTests.cs" />
     <Compile Include="tests\TestBase.cs" />
     <Compile Include="Figure\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

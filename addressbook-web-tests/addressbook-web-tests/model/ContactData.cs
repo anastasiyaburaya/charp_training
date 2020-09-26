@@ -178,6 +178,18 @@ namespace WebAddressbookTests
                 return (from g in db.Contacts.Where(x => x.Deprecated == "0000-00-00 00:00:00") select g).ToList();
             }
         }
+
+        public List<GroupData> GetGroups()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Groups
+                    from gcr in db.GCR.Where(p => p.ContactId == Id && p.GroupId == c.Id)
+                    select c).ToList();
+            }
+        }   //from gcr in db.GCR.Where(p => p.GroupId == Id && p.ContactId == c.Id
     }
+
+    //p.ContactId == Id && p.GroupId == c.Id
 }
 
