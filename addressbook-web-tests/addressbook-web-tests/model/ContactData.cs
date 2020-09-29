@@ -187,9 +187,7 @@ namespace WebAddressbookTests
                     from gcr in db.GCR.Where(p => p.ContactId == Id && p.GroupId == c.Id)
                     select c).ToList();
             }
-        }   //from gcr in db.GCR.Where(p => p.GroupId == Id && p.ContactId == c.Id
+        }   
     }
-
-    //p.ContactId == Id && p.GroupId == c.Id
 }
 

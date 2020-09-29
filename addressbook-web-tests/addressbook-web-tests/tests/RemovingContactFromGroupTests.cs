@@ -23,6 +23,30 @@ namespace WebAddressbookTests
         {    
             bool IsContactRemoved = false;
 
+            app.Navigator.GoToGroupsPage();
+            if (!app.Groups.IsElementPresentByClassName())
+            {
+                GroupData newGroup = new GroupData("qwerty");
+                newGroup.Header = "asdfg";
+                newGroup.Footer = "zxcvb";
+                app.Groups.Create(newGroup);
+            }
+
+            app.Navigator.GoToHomePage();
+            if (!app.Contacts.IsElementPresentByName())
+            {
+                ContactData newContact = new ContactData("firstnameTest", "lastnameTest");
+                newContact.Address = "ttt";
+                newContact.HomePhone = "yyy";
+                newContact.MobilePhone = "456";
+                newContact.WorkPhone = "iii";
+                newContact.Email = "ppp";
+                newContact.Email2 = "aaa";
+                newContact.Email3 = "ddd";
+
+                app.Contacts.Create(newContact);
+            }
+
             foreach (ContactData contact in ContactData.GetAll())
             {              
                 List<GroupData> groupList = contact.GetGroups();
