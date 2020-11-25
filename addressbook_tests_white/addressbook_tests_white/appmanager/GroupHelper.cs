@@ -42,6 +42,20 @@ namespace addressbook_tests_white
             return list;
         }
 
+        public void Remove()
+        {
+            Window dialogue = OpenGroupsDialogue();
+
+            Tree tree = dialogue.Get<Tree>("uxAddressTreeView");
+            TreeNode toBeRemoved = tree.Nodes[0].Nodes[0];
+            toBeRemoved.Click();
+            dialogue.Get<Button>("uxDeleteAddressButton").Click();
+            dialogue.Get<RadioButton>("uxDeleteAllRadioButton").Click();
+            dialogue.Get<Button>("uxOKAddressButton").Click();
+
+            CloseGroupsDialogue(dialogue);
+        }
+
         public void Add(GroupData newGroup)
         {
             Window dialogue = OpenGroupsDialogue();
@@ -50,7 +64,6 @@ namespace addressbook_tests_white
             textBox.Enter(newGroup.Name);
             Keyboard.Instance.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
             
-
             CloseGroupsDialogue(dialogue);
         }
 
