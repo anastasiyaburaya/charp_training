@@ -44,8 +44,8 @@ namespace addressbook_tests_white
 
         public void Remove()
         {
+        
             Window dialogue = OpenGroupsDialogue();
-
             Tree tree = dialogue.Get<Tree>("uxAddressTreeView");
             TreeNode toBeRemoved = tree.Nodes[0].Nodes[0];
             toBeRemoved.Click();
@@ -67,12 +67,12 @@ namespace addressbook_tests_white
             CloseGroupsDialogue(dialogue);
         }
 
-        private void CloseGroupsDialogue(Window dialogue)
+        public void CloseGroupsDialogue(Window dialogue)
         {
             dialogue.Get<Button>("uxCloseAddressButton").Click();
         }
 
-        private Window OpenGroupsDialogue()
+        public Window OpenGroupsDialogue()
         {
             manager.MainWindow.Get<Button>("groupButton").Click();
             return manager.MainWindow.ModalWindow(GROUPWINTITLE); 
