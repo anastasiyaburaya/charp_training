@@ -24,7 +24,7 @@ namespace mantis_tests
         {
            AccountData account = new AccountData()
            {
-               Name = "testuser", 
+               Name = "testuser2", 
                Password = "password",
                Email = "testuser@localhost.localdomain"
            };
