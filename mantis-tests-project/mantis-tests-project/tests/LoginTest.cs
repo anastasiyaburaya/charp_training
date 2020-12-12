@@ -13,17 +13,11 @@ namespace mantis_tests_project
         [Test]
         public void LoginWithValidCredentials()
         {
-            //prepare
-            
-
-            //action
             AccountData account = new AccountData("administrator", "root");
             app.Auth.Login(account);
 
             app.Auth.Logout();
 
-            ////verification
-            //Assert.IsTrue(app.Auth.IsLoggedIn(account));
         }
     }
 }
