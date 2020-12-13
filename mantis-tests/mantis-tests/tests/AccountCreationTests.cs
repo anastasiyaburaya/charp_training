@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Web;
 using NUnit.Framework;
 
 namespace mantis_tests
@@ -24,10 +25,20 @@ namespace mantis_tests
         {
            AccountData account = new AccountData()
            {
-               Name = "testuser2", 
-               Password = "password",
-               Email = "testuser@localhost.localdomain"
+               Name = "testuser3", 
+               Password = "password3",
+               Email = "testuser3@localhost.localdomain"
            };
+
+            List<AccountData> accounts = app.Admin.GetAllAccounts();
+            AccountData existingAccount = accounts.Find(x => x.Name == account.Name);
+            if (existingAccount != null)
+            {
+                app.Admin.DeleteAccount(existingAccount);
+            }
+
+            //app.James.Delete(account);
+            //app.James.Add(account);
 
             app.Registration.Register(account);
         }
