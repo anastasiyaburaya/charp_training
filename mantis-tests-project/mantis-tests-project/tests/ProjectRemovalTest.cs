@@ -12,6 +12,16 @@ namespace mantis_tests_project
         [Test]
         public void ProjectRemoveTest()
         {
+            app.ManagementMenu.GoToManagePage();
+            app.ManagementMenu.GoToManageProjectTab();
+
+            if (app.ManagementProject.GetProjectList().Count == 0)
+            {
+                string project = "projectTest";
+                app.ManagementProject.Create(project);
+                app.ManagementProject.Wait(TimeSpan.FromSeconds(5));
+            }
+            
             List<string> oldProjects = app.ManagementProject.GetProjectList();
 
             app.ManagementProject.Remove();

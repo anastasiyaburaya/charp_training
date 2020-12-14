@@ -15,10 +15,7 @@ namespace mantis_tests_project
         }
 
         public ProjectManagementHelper Create(string project)
-        {
-
-            manager.ManagementMenu.GoToManagePage();
-            manager.ManagementMenu.GoToManageProjectTab();         
+        {       
             InitProjectCreation();
             FillProjectName(project);
             AddProject();           
@@ -54,9 +51,6 @@ namespace mantis_tests_project
         public List<string> GetProjectList()
         {
             List<string> projects = new List<string>();
-
-            manager.ManagementMenu.GoToManagePage();
-            manager.ManagementMenu.GoToManageProjectTab();
 
             ICollection<IWebElement> elements = driver.FindElement(By.ClassName("table"))
                 .FindElements(By.TagName("tr")).Skip(1).Select(p => p.FindElement(By.TagName("td")).FindElement(By.TagName("a"))).ToArray();

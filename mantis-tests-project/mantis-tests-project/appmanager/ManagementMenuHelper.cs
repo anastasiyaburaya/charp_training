@@ -33,15 +33,12 @@ namespace mantis_tests_project
 
         public void GoToManagePage()
         {
-            driver.FindElements(By.ClassName("menu-icon"))[6].Click();
+            var last = driver.FindElements(By.XPath("//div[@id='sidebar']/ul/li")).Count;
+            driver.FindElement(By.XPath("//div[@id='sidebar']/ul/li[" + last + "]/a/i")).Click();
         }
 
         public void GoToManageProjectTab()
         {
-
-            //driver.FindElement(By.ClassName("main-content")).FindElement(By.ClassName("page-content"))
-            //    .FindElements(By.ClassName("nav"))[0].FindElements(By.TagName("li"))[2].FindElement(By.TagName("a")).Click();
-
             driver.FindElement(By.LinkText("Manage Projects")).Click();
         }
     }

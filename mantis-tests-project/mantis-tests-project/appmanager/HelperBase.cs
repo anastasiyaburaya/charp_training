@@ -31,6 +31,11 @@ namespace mantis_tests_project
             }
         }
 
+        public void Wait(TimeSpan timeSpan)
+        {
+            driver.Manage().Timeouts().ImplicitWait = timeSpan;
+        }
+
         public bool IsElementPresent(By by)
         {
             try

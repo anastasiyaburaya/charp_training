@@ -18,8 +18,10 @@ namespace mantis_tests
         public RegistrationHelper Registration { get;  set; }
         public FtpHelper Ftp { get; set; }
         public AdminHelper Admin { get; set; }
+        public APIHelper API { get; set; }
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
+        
 
         private ApplicationManager()
         {
@@ -29,6 +31,7 @@ namespace mantis_tests
             Ftp = new FtpHelper(this);
 
             Admin = new AdminHelper(this, baseURL);
+            API = new APIHelper(this);
         }
 
         ~ApplicationManager()
