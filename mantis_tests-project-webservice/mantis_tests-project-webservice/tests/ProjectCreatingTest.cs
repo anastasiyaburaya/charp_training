@@ -15,19 +15,20 @@ namespace mantis_tests_project_webservice
         {
             AccountData account = new AccountData("administrator", "root");
             
-            string project = "project" + Guid.NewGuid();
+            ProjectData project = new ProjectData()
+            {
+                Name = "project" + Guid.NewGuid()
+            }; 
 
             app.ManagementMenu.GoToManagePage();
             app.ManagementMenu.GoToManageProjectTab();
 
-            //List<string> oldProjects = app.API.GetProjectList(account);
+            List<ProjectData> oldProjects = app.API.GetProjectList(account);
 
-            List<string> oldProjects = app.ManagementProject.GetProjectList();
-
-            app.ManagementProject.Create(project);
+            app.ManagementProject.Create(project.Name);
             app.ManagementProject.Wait(TimeSpan.FromSeconds(5));
 
-            List<string> newProjects = app.ManagementProject.GetProjectList();           
+            List<ProjectData> newProjects = app.API.GetProjectList(account);
             Assert.AreEqual(oldProjects.Count + 1, newProjects.Count);
 
             oldProjects.Add(project);
