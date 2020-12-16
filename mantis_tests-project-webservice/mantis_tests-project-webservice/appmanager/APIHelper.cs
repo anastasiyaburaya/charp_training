@@ -54,12 +54,12 @@ namespace mantis_tests_project_webservice
 
             //ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.DefaultConnectionLimit = 9999;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                                                  | SecurityProtocolType.Tls11
-                                                  | SecurityProtocolType.Tls12
-                                                  | SecurityProtocolType.Ssl3;
+            //ServicePointManager.Expect100Continue = true;
+            //ServicePointManager.DefaultConnectionLimit = 9999;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+            //                                      | SecurityProtocolType.Tls11
+            //                                      | SecurityProtocolType.Tls12
+            //                                      | SecurityProtocolType.Ssl3;
 
             Mantis.MantisConnectPortTypeClient client = new MantisConnectPortTypeClient();
             Mantis.ProjectData project = new Mantis.ProjectData();
